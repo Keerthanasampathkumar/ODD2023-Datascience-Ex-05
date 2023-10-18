@@ -1,27 +1,20 @@
 # Ex:05 Feature Generation
-
-# AIM
+### Aim:
 To read the given data and perform Feature Generation process and save the data to a file.
-
-# Explanation
+### Explanation:
 Feature Generation (also known as feature construction, feature extraction or feature engineering) is the process of transforming features into new features that better relate to the target.
-# ALGORITHM
-### STEP 1
-Read the given Data
-### STEP 2
-Clean the Data Set using Data Cleaning Process
-### STEP 3
-Apply Feature Generation techniques to all the feature of the data set
-#### STEP 4
-Save the data to the file
+### Algorithm:
+Step1: Read the given Data.
 
-# PROGRAM
+Step2: Clean the Data Set using Data Cleaning Process.
 
-## Developed by:KEERTHANA S
-## Register number:212222230066
+Step3: Apply Feature Generation techniques to all the feature of the data set.
 
-### For Encoding.csv file
-```c
+Step4: Save the data to the file.
+### Program:
+
+- Encoding.csv:
+```
 import pandas as pd
 df=pd.read_csv('Encoding Data.csv')
 df.head()
@@ -33,50 +26,105 @@ df['ord_2']=en.fit_transform(df[["ord_2"]])
 df
 le = LabelEncoder()
 df['Nom_0'] = le.fit_transform(df[["nom_0"]])
-df
-!pip install --upgrade category_encoders
+df  
 from category_encoders import BinaryEncoder
 be = BinaryEncoder()
 data = be.fit_transform(df['bin_1'])
-df  = pd.concat([df,data],axis=1)
+df = pd.concat([df,data],axis=1)
 df
 be = BinaryEncoder()
 data = be.fit_transform(df['bin_2'])
-df  = pd.concat([df,data],axis=1)
+df = pd.concat([df,data],axis=1)
 df
 ```
-### Data.csv
-```c
+ ### Output:
+ 
+initial data:
+
+![274622148-b46c2673-6e5f-4ecb-92b9-7a380b37908a](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/d30275a5-b44f-43ab-971b-414b755da48d)
+
+ Unique data:
+ 
+![274622594-27ab6d79-680e-466f-8d6b-a03f4508397c](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/9074c13b-e06f-45c2-92ef-c9ddbbb08f7d)
+
+ Original Encoder:
+ 
+![274624836-37731dd9-1302-4dde-84ac-434dd52a4945](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/97cbdb20-074c-4708-ac5a-3765908e3e98)
+
+Label Encoder:
+
+![274624847-e9fd27ca-93ba-47a7-9b69-8ac0c1bc06fe](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/7cace677-0ac5-4d2b-9738-1d37f74ab089)
+
+Binary Encoder:
+
+![274624863-adffa9d7-4a6a-4de2-827e-2f41bd7560ee](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/895a43ad-3846-4c1d-858a-6e39b4165a06)
+
+![274624897-3a6f8f34-7028-4d2f-9d84-cce7b2853d2a](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/5ad2e7f3-a7c6-4574-867d-053f73f47f74)
+
+
+- Data.csv:
+```
 import pandas as pd
 df1 = pd.read_csv("data.csv")
-df1.head()
-df1['Ord_1'].unique()
+df.head()
+df['Ord_1'].unique()
 from sklearn.preprocessing import LabelEncoder,OrdinalEncoder
 climate = ['Cold','Warm','Hot','Very Hot']
 en= OrdinalEncoder(categories = [climate])
-df1['Ord_1']=en.fit_transform(df1[["Ord_1"]])
-df1
-df1['Ord_2'].unique()
+df['Ord_1']=en.fit_transform(df[["Ord_1"]])
+df.head()
+df['Ord_2'].unique()
 cl = ['High School','Diploma','Bachelors','Masters','PhD']
 en= OrdinalEncoder(categories = [cl])
-df1['Ord_2']=en.fit_transform(df1[["Ord_2"]])
-df1
+df['Ord_2']=en.fit_transform(df[["Ord_2"]])
+df.head()
 le = LabelEncoder()
-df1['City'] = le.fit_transform(df1[["City"]])
-df1
+df['City'] = le.fit_transform(df[["City"]])
+df.head()
+from category_encoders import BinaryEncoder
+be= BinaryEncoder()
+data= be.fit_transform(df['bin_1'])
+df= pd.concat([df,data],axis=1)
+df.head()
 from category_encoders import BinaryEncoder
 be = BinaryEncoder()
-dat = be.fit_transform(df1['bin_1'])
-df1  = pd.concat([df1,dat],axis=1)
-df1
-from category_encoders import BinaryEncoder
-be = BinaryEncoder()
-data1 = be.fit_transform(df1['bin_2'])
-df1  = pd.concat([df1,data1],axis=1)
-df1
+data1 = be.fit_transform(df['bin_2'])
+df= pd.concat([df1,data1],axis=1)
+df  
 ```
-### BMI.csv file
-```c
+
+Output:
+
+Initial data:
+
+![274630974-9015df9d-e8a6-4267-acc6-80179e575384](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/1042ec41-013c-4c79-898e-2e681785a51d)
+
+Unique data:
+
+![274631114-7355573d-0c9a-4699-aa3b-21da0ea34136](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/95c0f8c1-c7f9-4a9e-914d-14df49776d96)
+
+Original Encoder:
+
+![274631154-55a3e602-a104-439e-8f7a-d5131b41af49](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/49ca119a-e07f-446a-9ce5-de33a7553050)
+
+
+![274631420-8d34dec8-2bf1-4be4-a017-53a3f66567d9](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/b1aeec37-027f-4cb9-b288-4c91122e81a5)
+
+
+Label Encoder:
+
+![274631475-aef111d5-ed57-48d0-bf06-ecb4bba9dc25](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/fe64fa73-9c1f-43f6-b73a-200455eaa4ff)
+
+Binary Encoder:
+
+![274631520-67b4b397-d891-48b3-9b02-7bd67d6e192f](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/d6652ea1-e474-4090-9d1c-120b141be1f5)
+
+
+![274631583-9211db6c-364d-4310-8c47-38a151d95d7f](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/ff6a9f0d-c98a-4549-ba5c-221a3ebd2a2d)
+
+
+### BMI.csv:
+```
 import pandas as pd
 df2 = pd.read_csv("/content/bmi.csv")
 df2.head()
@@ -87,59 +135,19 @@ df2
 df2 = pd.get_dummies(df2, prefix=['Index'] ,columns=['Index'])
 df2
 ```
+### Output:
 
-# OUTPUT
+ Initial data:
+ 
+![274799301-532fcf97-f3bc-424e-9bac-e7157fc98ba8](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/bbe3c6c8-91fe-4c75-adc1-f79ceb9f044a)
 
-### For encoding.csv file
+Binary Encoder:
 
-#### Initial data:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/f5cec2f4-94be-40fa-b2c3-a59adfa35529)
+![274799308-d09bc5ef-7b73-4ed9-b21a-57535b9ceaf2](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/ed4bbc52-e877-4eab-b781-cc07e088a278)
 
-#### Unique value:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/029ec726-bdca-45f7-a02e-ad869bd56ee4)
+Dummies:
 
-#### Ordinal Encoder:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/cbc90934-c85e-4e60-b062-aa17f7848e1c)
+![274799314-071fdcea-6db7-48d7-bf64-3dcca16864f5](https://github.com/22002102/ODD2023-Datascience-Ex-05/assets/119091638/8df43b18-6c6b-4b96-bbbb-51015dd14a91)
 
-#### Label Encoder:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/be7e341c-e66a-4522-9daa-ca58e835d491)
-
-#### Binary Encoder:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/6a474ae4-4f11-445a-97b7-a138b89096da)
-
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/7d9da7e9-83e6-4331-a573-30e11e6e3f7b)
-
-### For Data.csv file
-
-#### Initial data:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/97e763d2-5d13-4557-ac74-013d5dbafc31)
-
-#### Unique data:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/b6eeb54b-fa73-453c-8633-e6d2683e188e)
-
-#### Ordinal Encoder:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/0347af5e-9372-4e3d-8d6c-37624bf491ad)
-
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/b40cb7fe-2307-49fe-b5b4-c8fc0cc6a92e)
-
-#### Label Encoder:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/1fa70e48-0138-4374-a692-f1bbb8f31296)
-
-#### Binary Encoder:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/b1289098-ce15-417b-9fda-aa597b70ea47)
-
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/4d218dd6-737b-461b-af77-e7f84210dd55)
-
-### For bmi.csv file
-
-#### Initial data:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/27089f7d-ef4b-47f9-b281-55f1851c535d)
-
-#### Binary Encoders:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/f5908604-451a-4c35-89fb-03d480ee3126)
-
-#### Dummies:
-![image](https://github.com/Yuvaranithulasingam/ODD2023-Datascience-Ex-05/assets/121418522/aaf349a3-ae1d-4273-9652-ef413ff37f3d)
-
-# RESULT:
+### Result:
 The Feature Generation process was performed and saved the data to a file.
